@@ -10,11 +10,8 @@
         <a href="#" 
            class="list-group-item list-group-item-action"
            *ngFor="let gif of historial">
-            {{gif}}
+           {{ gif | titlecase }}
         </a>
-        <ul>
-            <li *ngFor="let gif of historial">{{ gif }}</li>
-        </ul>
     </div>
 
 </div>

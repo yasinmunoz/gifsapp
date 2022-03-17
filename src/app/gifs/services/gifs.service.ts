@@ -12,12 +12,22 @@ export class GifsService {
   // porque se hace paso por referencia
   // los puntos evitan eso, rompiendo la referencia 
 
-  get historial() {
+  get historial() {        
     return [...this._historial];
   }
 
-  buscarGifs( query: string ){
-    this._historial.unshift( query );
+  buscarGifs( query: string ){        
+    
+    // convertimos todas las búsquedas en minúsculo
+    query = query.trim().toLocaleLowerCase();
+
+    // si no existe esa búsqueda en el array de búsqueda, lo inserto
+    if ( !this._historial.includes( query ) ) {
+      this._historial.unshift( query );
+    }
+
+    this._historial = this._historial.splice(0,10);
+
     console.log(this._historial);
   }
 }
